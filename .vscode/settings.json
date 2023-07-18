@@ -1,4 +1,10 @@
 {
     "commentTranslate.hover.enabled": true,
-    "commentTranslate.source": "Google"
+    "commentTranslate.source": "Google",
+    "files.associations": {
+        "arm_math.h": "c",
+        "pid.h": "c"
+    }
+    "C_Cpp.intelliSenseEngineFallback": "Disabled", //需要添加的
+    "C_Cpp.intelliSenseEngine": "Tag Parser",  //  需要添加的
 }
