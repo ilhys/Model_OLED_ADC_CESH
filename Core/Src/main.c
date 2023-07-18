@@ -152,18 +152,18 @@ int main(void)
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-  HAL_TIM_Base_Start_IT(&htim1); //?1?7?1?7?1?7?1?7?1?7?1?7?0?2?1?7?1?7?1?7��?1?7
-  HAL_ADCEx_Calibration_Start(&hadc1);                  //AD��?0?6
+  HAL_TIM_Base_Start_IT(&htim1); //开启定时器
+  HAL_ADCEx_Calibration_Start(&hadc1);                  
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Value, ADC_SIZE);
-  HAL_TIM_Base_Start_IT(&htim3); //?1?7?1?7?1?7?1?7?1?7?1?7?0?2?1?7?1?7?1?7��?1?7
+  HAL_TIM_Base_Start_IT(&htim3); //开启定时器
   ceshi=156.0212;
-  while (!AdcConvEnd)                                   //?1?7?0?9?1?7?0?8?1?7?1?7?1?7?1?7?1?7
+  while (!AdcConvEnd)                                   //等待转化完毕
     ;
   for (uint16_t i = 0; i < ADC_SIZE; i+=2)
   {
-	printf("%.3f\n", ADC_Value[i] * 3.3 / 4095); //?1?7?1?7?1?7?1?2?1?7?0?3?1?7?1?7?1?7?5?1?1?7?1?7?1?7
+	printf("%.3f\n", ADC_Value[i] * 3.3 / 4095); //打印ADC_Value
   }
-  /**********************?1?7?1?7?1?7��?1?7?1?7?1?7?0?0?1?7��*******************************/
+  /**********************进行傅里叶变换*******************************/
   AdcConvEnd=0;  
   for (int i = 0; i < FFT_LENGTH; i++)
   {
@@ -172,18 +172,18 @@ int main(void)
   }
   arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
   arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
-  /**********************?1?7?1?7?1?7?1?7?1?7��?1?7?1?7?1?7*******************************/
+  /**********************等待转化完毕*******************************/
   fft_outputbuf[0] /= 1024;
 
-    for (int i = 1; i < FFT_LENGTH; i++)//?1?7?1?7?1?7?1?7?1?7?1?7?1?7��?1?7?1?7?1?7?1?7?0?5
+    for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅值
     {
         fft_outputbuf[i] /= 512;
     }
 
-    /***********************?1?7?1?7?0?3?1?7?1?7?1?7**********************************/
+    /***********************打印结果**********************************/
     printf("FFT Result:\r\n");
 
-    for (int i = 0; i < FFT_LENGTH; i++)//?1?7?1?7?1?7?1?7?1?7?1?7?1?7��?1?7?1?7?1?7?1?7?0?5
+    for (int i = 0; i < FFT_LENGTH; i++)//
     {
         printf("%d:\t%.2f\r\n", i, fft_outputbuf[i]);
     }    
