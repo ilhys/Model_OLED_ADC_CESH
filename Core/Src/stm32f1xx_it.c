@@ -49,7 +49,7 @@ extern uint32_t ADC_Value[ADC_SIZE];
 extern float fft_inputbuf[FFT_LENGTH * 2];  
 extern float fft_outputbuf[FFT_LENGTH];
 extern float adc_buff[FFT_LENGTH];
-
+extern uint32_t ADC_count;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -217,29 +217,29 @@ void DMA1_Channel1_IRQHandler(void)
 
   /* USER CODE END DMA1_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_adc1);
+  adc_buff[ADC_count]=ADC_Value[0]*3.3/4096+0.00;
+//  printf("%.3f\n",adc_buff[ADC_count]);
+  ADC_count++;
+//  if(ADC_count>1023) ADC_count=0;
   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
-    /**********************进行傅里叶变换*******************************/
-  for (int i = 0; i < FFT_LENGTH; i++)
+  if(ADC_count>1023) 
   {
-    adc_buff[i] = ADC_Value[2*i] * 3.3 / 4096;
-	  printf("%.3f\n", adc_buff[i]); 
-	  fft_inputbuf[i * 2] = adc_buff[i];
-    fft_inputbuf[i * 2 + 1] = 0;
+    ADC_count=0;  
+    /**********************进行傅里叶变换*******************************/
+//    for (int i = 0; i < FFT_LENGTH; i++)
+//    { 
+//	  fft_inputbuf[i * 2] = adc_buff[i];
+//    fft_inputbuf[i * 2 + 1] = 0;
+//    }
+//    arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
+//    arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
+//    /**********************等待转化完毕*******************************/
+//    fft_outputbuf[0] /= 1024;
+//     for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅值
+//    {
+//       fft_outputbuf[i] /= 512;
+//	  }
   }
-//     for (uint16_t i = 0; i < FFT_LENGTH; i+=2)
-//  {
-//     printf("%.3f\n", adc_buff[i]); //打印ADC_Value
-//  }
-//  arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
-//  arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
-//  /**********************等待转化完毕*******************************/
-//  fft_outputbuf[0] /= 1024;
-
-//  for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅值
-//  {
-//        fft_outputbuf[i] /= 512;
-//  }
-
 //  /***********************打印结果**********************************/
 //  printf("FFT Result:\r\n");
     // for (int i = 0; i < FFT_LENGTH; i++)//

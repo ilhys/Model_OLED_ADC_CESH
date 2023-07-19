@@ -59,8 +59,9 @@ float va,vb,va1;
 uint32_t ad1,ad2,i;
 int count=0;
 __IO uint8_t AdcConvEnd = 0;
-
+uint32_t ADC_count=0;
 uint32_t ADC_Value[ADC_SIZE];
+
 float adc_buff[FFT_LENGTH];
 float fft_inputbuf[FFT_LENGTH * 2];  
 float fft_outputbuf[FFT_LENGTH];  
@@ -104,10 +105,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	else if(htim->Instance == TIM3)
 	{
+//		adc_buff[ADC_count]=ADC_Value[0]*3.3/4096+0.00;
+//		printf("%d",ADC_Value[0]);
+//		printf("%.3f\n",adc_buff[ADC_count]);
+//		ADC_count++;
+//		if(ADC_count>1023) ADC_count=0;
+//		printf("%.3f\n",adc_buff[ADC_count]);
 //		for (uint16_t i = 0; i < FFT_LENGTH; i++)
 //		{
 //		    printf("%.3f\n", adc_buff[i]); 
 //		}
+		
 	}
 }
 
@@ -173,12 +181,13 @@ int main(void)
 //	{
 //     printf("%.3f\n", adc_buff[i]); //打印ADC_Value
 //	}
-  OLED_operate_gram(PEN_CLEAR);
-  OLED_printf(0,0,"HUIHUI");
-  OLED_printf(1,0,"%.2f",ceshi);
-  OLED_refresh_gram();
+  printf("%.3f,%d\n",adc_buff[ADC_count],ADC_count);
+//  OLED_operate_gram(PEN_CLEAR);   
+//  OLED_printf(0,0,"HUIHUI");
+//  OLED_printf(1,0,"%.2f",ceshi);
+//  OLED_refresh_gram();
   ceshi++;
-  HAL_Delay(100);
+//  HAL_Delay(100);
 	  
     /* USER CODE END WHILE */
 

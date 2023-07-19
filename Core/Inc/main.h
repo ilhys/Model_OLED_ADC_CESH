@@ -69,7 +69,7 @@ void Error_Handler(void);
 #define LED0_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-#define ADC_SIZE 2048
+#define ADC_SIZE 2
 #define FFT_LENGTH 1024
 /* USER CODE END Private defines */
 
