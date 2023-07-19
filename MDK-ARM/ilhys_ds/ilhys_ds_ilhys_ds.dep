@@ -1,7 +1,7 @@
 Dependencies for Project 'ilhys_ds', Target 'ilhys_ds': (DO NOT MODIFY !)
 F (startup_stm32f103xe.s)(0x64B798FF)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"--list startup_stm32f103xe.lst --xref -o ilhys_ds\startup_stm32f103xe.o --depend ilhys_ds\startup_stm32f103xe.d)
-F (../Core/Src/main.c)(0x64B7994F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\main.o --omf_browse ilhys_ds\main.crf --depend ilhys_ds\main.d)
-I (../Core/Inc/main.h)(0x64B79928)
+F (../Core/Src/main.c)(0x64B7A2CB)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\main.o --omf_browse ilhys_ds\main.crf --depend ilhys_ds\main.d)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -49,7 +49,7 @@ I (../Drivers/CMSIS/DSP/Include/arm_math.h)(0x648AAB20)
 I (../Drivers/CMSIS/DSP/Include/arm_common_tables.h)(0x648AAB20)
 F (../Core/Src/gpio.c)(0x64B29925)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\gpio.o --omf_browse ilhys_ds\gpio.crf --depend ilhys_ds\gpio.d)
 I (../Core/Inc/gpio.h)(0x6493A73A)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -82,7 +82,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 F (../Core/Src/adc.c)(0x64B798FB)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\adc.o --omf_browse ilhys_ds\adc.crf --depend ilhys_ds\adc.d)
 I (../Core/Inc/adc.h)(0x64B29925)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -115,7 +115,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 F (../Core/Src/dma.c)(0x64B29925)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\dma.o --omf_browse ilhys_ds\dma.crf --depend ilhys_ds\dma.d)
 I (../Core/Inc/dma.h)(0x64B29925)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -148,7 +148,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 F (../Core/Src/i2c.c)(0x64B2522E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\i2c.o --omf_browse ilhys_ds\i2c.crf --depend ilhys_ds\i2c.d)
 I (../Core/Inc/i2c.h)(0x64B2522E)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -181,7 +181,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 F (../Core/Src/tim.c)(0x64B392C3)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\tim.o --omf_browse ilhys_ds\tim.crf --depend ilhys_ds\tim.d)
 I (../Core/Inc/tim.h)(0x64B29925)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -214,7 +214,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 F (../Core/Src/usart.c)(0x64B265EE)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\usart.o --omf_browse ilhys_ds\usart.crf --depend ilhys_ds\usart.d)
 I (../Core/Inc/usart.h)(0x64956E6B)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -246,8 +246,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 I (D:\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
-F (../Core/Src/stm32f1xx_it.c)(0x64B5331C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\stm32f1xx_it.o --omf_browse ilhys_ds\stm32f1xx_it.crf --depend ilhys_ds\stm32f1xx_it.d)
-I (../Core/Inc/main.h)(0x64B79928)
+F (../Core/Src/stm32f1xx_it.c)(0x64B7A4D8)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\stm32f1xx_it.o --omf_browse ilhys_ds\stm32f1xx_it.crf --depend ilhys_ds\stm32f1xx_it.d)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -280,8 +280,14 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x648AAB28)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_it.h)(0x64B3887E)
 I (D:\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (../Middlewares/ST/ARM/DSP/Inc/arm_math.h)(0x648027C4)
+I (D:\Keil5\ARM\ARMCC\include\string.h)(0x588B8344)
+I (D:\Keil5\ARM\ARMCC\include\math.h)(0x588B8344)
+I (../Drivers/CMSIS/DSP/Include/arm_const_structs.h)(0x648AAB20)
+I (../Drivers/CMSIS/DSP/Include/arm_math.h)(0x648AAB20)
+I (../Drivers/CMSIS/DSP/Include/arm_common_tables.h)(0x648AAB20)
 F (../Core/Src/stm32f1xx_hal_msp.c)(0x6493A73A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../../Model_OLED -I ../Middlewares/ST/ARM/DSP/Inc -I ../Drivers/CMSIS/DSP/Include-I.\RTE\_ilhys_ds-ID:\Keil5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o ilhys_ds\stm32f1xx_hal_msp.o --omf_browse ilhys_ds\stm32f1xx_hal_msp.crf --depend ilhys_ds\stm32f1xx_hal_msp.d)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)
@@ -877,7 +883,7 @@ F (..\BSP\OLED\oled.c)(0x64B253C6)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 
 I (..\BSP\OLED\OLED.h)(0x64B253C7)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (..\BSP\OLED\asc.h)(0x64B253C6)
-I (../Core/Inc/main.h)(0x64B79928)
+I (../Core/Inc/main.h)(0x64B7A4E8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x648AAB28)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64B29926)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x648AAB28)

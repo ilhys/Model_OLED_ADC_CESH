@@ -55,12 +55,13 @@
 /* USER CODE BEGIN PV */
 uint32_t size=200;
 float ceshi=0;
-uint32_t ADC_Value[ADC_SIZE];
 float va,vb,va1;
 uint32_t ad1,ad2,i;
 int count=0;
 __IO uint8_t AdcConvEnd = 0;
 
+uint32_t ADC_Value[ADC_SIZE];
+float adc_buff[FFT_LENGTH];
 float fft_inputbuf[FFT_LENGTH * 2];  
 float fft_outputbuf[FFT_LENGTH];  
 
@@ -103,7 +104,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	else if(htim->Instance == TIM3)
 	{
-
+//		for (uint16_t i = 0; i < FFT_LENGTH; i++)
+//		{
+//		    printf("%.3f\n", adc_buff[i]); 
+//		}
 	}
 }
 
@@ -157,36 +161,7 @@ int main(void)
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Value, ADC_SIZE);
   HAL_TIM_Base_Start_IT(&htim3); //开启定时器
   ceshi=156.0212;
-  while (!AdcConvEnd)                                   //等待转化完毕
-    ;
-  for (uint16_t i = 0; i < ADC_SIZE; i+=2)
-  {
-	printf("%.3f\n", ADC_Value[i] * 3.3 / 4095); //打印ADC_Value
-  }
-  /**********************进行傅里叶变换*******************************/
-  AdcConvEnd=0;  
-  for (int i = 0; i < FFT_LENGTH; i++)
-  {
-    fft_inputbuf[i * 2] = ADC_Value[2*i] * 3.3 / 4096;
-    fft_inputbuf[i * 2 + 1] = 0;
-  }
-  arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
-  arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
-  /**********************等待转化完毕*******************************/
-  fft_outputbuf[0] /= 1024;
 
-    for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅值
-    {
-        fft_outputbuf[i] /= 512;
-    }
-
-    /***********************打印结果**********************************/
-    printf("FFT Result:\r\n");
-
-    for (int i = 0; i < FFT_LENGTH; i++)//
-    {
-        printf("%d:\t%.2f\r\n", i, fft_outputbuf[i]);
-    }    
   
   /* USER CODE END 2 */
 
@@ -194,7 +169,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+//	for (uint16_t i = 0; i < FFT_LENGTH; i++)
+//	{
+//     printf("%.3f\n", adc_buff[i]); //打印ADC_Value
+//	}
   OLED_operate_gram(PEN_CLEAR);
   OLED_printf(0,0,"HUIHUI");
   OLED_printf(1,0,"%.2f",ceshi);

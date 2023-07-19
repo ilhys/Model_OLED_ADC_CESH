@@ -23,6 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,6 +45,11 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 extern uint8_t AdcConvEnd;
+extern uint32_t ADC_Value[ADC_SIZE];
+extern float fft_inputbuf[FFT_LENGTH * 2];  
+extern float fft_outputbuf[FFT_LENGTH];
+extern float adc_buff[FFT_LENGTH];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -211,12 +218,34 @@ void DMA1_Channel1_IRQHandler(void)
   /* USER CODE END DMA1_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_adc1);
   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
-  AdcConvEnd = 1;
-//    for (uint16_t i = 0; i < 200; i+=2)
+    /**********************进行傅里叶变换*******************************/
+  for (int i = 0; i < FFT_LENGTH; i++)
+  {
+    adc_buff[i] = ADC_Value[2*i] * 3.3 / 4096;
+	  printf("%.3f\n", adc_buff[i]); 
+	  fft_inputbuf[i * 2] = adc_buff[i];
+    fft_inputbuf[i * 2 + 1] = 0;
+  }
+//     for (uint16_t i = 0; i < FFT_LENGTH; i+=2)
 //  {
-//    printf("%.3f\n", ADC_Value[i] * 3.3 / 4095); //���ݴ�ӡ���鿴���
+//     printf("%.3f\n", adc_buff[i]); //打印ADC_Value
 //  }
-//  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Value, 200);
+//  arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
+//  arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
+//  /**********************等待转化完毕*******************************/
+//  fft_outputbuf[0] /= 1024;
+
+//  for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅值
+//  {
+//        fft_outputbuf[i] /= 512;
+//  }
+
+//  /***********************打印结果**********************************/
+//  printf("FFT Result:\r\n");
+    // for (int i = 0; i < FFT_LENGTH; i++)//
+    // {
+    //     printf("%d:\t%.2f\r\n", i, fft_outputbuf[i]);
+    // }    
 	
   /* USER CODE END DMA1_Channel1_IRQn 1 */
 }
