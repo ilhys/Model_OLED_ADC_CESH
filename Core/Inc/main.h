@@ -67,10 +67,10 @@ void Error_Handler(void);
 #define LCD_BL_GPIO_Port GPIOB
 #define LED0_Pin GPIO_PIN_5
 #define LED0_GPIO_Port GPIOB
+
+/* USER CODE BEGIN Private defines */
 #define ADC_SIZE 2048
 #define FFT_LENGTH 1024
-/* USER CODE BEGIN Private defines */
-
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
