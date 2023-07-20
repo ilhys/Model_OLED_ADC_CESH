@@ -65,7 +65,7 @@ uint32_t ADC_Value[ADC_SIZE];
 float adc_buff[FFT_LENGTH];
 float fft_inputbuf[FFT_LENGTH * 2];  
 float fft_outputbuf[FFT_LENGTH];  
-
+double effective_value;
 
 /* USER CODE END PV */
 
@@ -97,9 +97,9 @@ uint16_t sin1[200] = {3657,3770,3882,3995,4107,4219,4330,4440,4550,4659,4766,487
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	static int k = 0;
-	if(++k == size)k = 0;
 	if(htim->Instance == TIM1)
 	{
+    	if(++k == size)k = 0;
 //		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, sin1[k]); 
 		TIM1->CCR1=sin1[k];
 	}
@@ -164,10 +164,10 @@ int main(void)
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-  HAL_TIM_Base_Start_IT(&htim1); //开启定时器
+  HAL_TIM_Base_Start_IT(&htim1); //�?启定时器
   HAL_ADCEx_Calibration_Start(&hadc1);                  
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Value, ADC_SIZE);
-  HAL_TIM_Base_Start_IT(&htim3); //开启定时器
+  HAL_TIM_Base_Start_IT(&htim3); //�?启定时器
   ceshi=156.0212;
 
   
@@ -181,7 +181,7 @@ int main(void)
 //	{
 //     printf("%.3f\n", adc_buff[i]); //打印ADC_Value
 //	}
-  printf("%.3f,%d\n",adc_buff[ADC_count],ADC_count);
+//  printf("%.3f,%d\n",adc_buff[ADC_count],ADC_count);
 //  OLED_operate_gram(PEN_CLEAR);   
 //  OLED_printf(0,0,"HUIHUI");
 //  OLED_printf(1,0,"%.2f",ceshi);
