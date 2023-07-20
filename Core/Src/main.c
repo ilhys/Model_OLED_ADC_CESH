@@ -65,7 +65,10 @@ uint32_t ADC_Value[ADC_SIZE];
 float adc_buff[FFT_LENGTH];
 float fft_inputbuf[FFT_LENGTH * 2];  
 float fft_outputbuf[FFT_LENGTH];  
+
 double effective_value;
+double his_value;
+CNTL_PI_F U_pi;              //U_pi
 
 /* USER CODE END PV */
 
@@ -101,7 +104,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
     	if(++k == size)k = 0;
 //		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, sin1[k]); 
-		TIM1->CCR1=sin1[k];
+		TIM1->CCR1=sin1[k]*U_pi.Out;
+//		TIM1->CCR1=sin1[k];
 	}
 	else if(htim->Instance == TIM3)
 	{
@@ -135,7 +139,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -164,12 +168,13 @@ int main(void)
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_3);
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-  HAL_TIM_Base_Start_IT(&htim1); //�?启定时器
+  HAL_TIM_Base_Start_IT(&htim1); //�?启定时器
   HAL_ADCEx_Calibration_Start(&hadc1);                  
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Value, ADC_SIZE);
-  HAL_TIM_Base_Start_IT(&htim3); //�?启定时器
+  HAL_TIM_Base_Start_IT(&htim3); //�?启定时器
   ceshi=156.0212;
-
+  CNTL_PI_F_init(&U_pi);//U_pi初始值化
+  U_pi.Kp = 0.1;    U_pi.Ki = 0.002;
   
   /* USER CODE END 2 */
 

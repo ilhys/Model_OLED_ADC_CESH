@@ -25,6 +25,7 @@
 #include "stdio.h"
 #include "arm_math.h"
 #include "arm_const_structs.h"
+#include "./BSP/pidw/pid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,6 +52,9 @@ extern float fft_outputbuf[FFT_LENGTH];
 extern float adc_buff[FFT_LENGTH];
 extern uint32_t ADC_count;
 extern double effective_value;
+extern double his_value;
+extern CNTL_PI_F U_pi;  
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -229,7 +233,7 @@ void DMA1_Channel1_IRQHandler(void)
   if(ADC_count>1023) 
   {
     ADC_count=0;  
-    /**********************进行傅里叶变�?*******************************/
+    /**********************进行傅里叶变�?*******************************/
     for (int i = 0; i < FFT_LENGTH; i++)
     { 
 	  fft_inputbuf[i * 2] = adc_buff[i];
@@ -240,7 +244,7 @@ void DMA1_Channel1_IRQHandler(void)
     arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
 //    /**********************等待转化完毕*******************************/
     fft_outputbuf[0] /= 1024;
-      for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅�??
+      for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅�??
     {
        fft_outputbuf[i] /= 512;
 	}
@@ -251,12 +255,12 @@ void DMA1_Channel1_IRQHandler(void)
 	effective_value=effective_value/=FFT_LENGTH;
 	effective_value=sqrt(effective_value);
   }
-//  /***********************打印结果**********************************/
-//  printf("FFT Result:\r\n");
-    // for (int i = 0; i < FFT_LENGTH; i++)//
-    // {
-    //     printf("%d:\t%.2f\r\n", i, fft_outputbuf[i]);
-    // }    
+  if(effective_value>=10)   	 effective_value=his_value;
+  his_value=effective_value;
+  U_pi.Ref = (1.56);  
+  U_pi.Fbk = (effective_value);     	
+  CNTL_PI_F_FUNC(&U_pi);
+
 	
   /* USER CODE END DMA1_Channel1_IRQn 1 */
 }
