@@ -50,6 +50,8 @@ extern uint32_t ADC_Value[ADC_SIZE];
 extern float fft_inputbuf[FFT_LENGTH * 2];  
 extern float fft_outputbuf[FFT_LENGTH];
 extern float adc_buff[FFT_LENGTH];
+
+extern float Voltage_REF;
 extern uint32_t ADC_count;
 extern double effective_value;
 extern double his_value;
@@ -257,7 +259,7 @@ void DMA1_Channel1_IRQHandler(void)
   }
   if(effective_value>=10)   	 effective_value=his_value;
   his_value=effective_value;
-  U_pi.Ref = (1.56);  
+  U_pi.Ref = (Voltage_REF);  
   U_pi.Fbk = (effective_value);     	
   CNTL_PI_F_FUNC(&U_pi);
 

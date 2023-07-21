@@ -66,6 +66,7 @@ float adc_buff[FFT_LENGTH];
 float fft_inputbuf[FFT_LENGTH * 2];  
 float fft_outputbuf[FFT_LENGTH];  
 
+float Voltage_REF=1.56;
 double effective_value;
 double his_value;
 CNTL_PI_F U_pi;              //U_pi
@@ -83,6 +84,29 @@ void SystemClock_Config(void);
 void delay_ms(uint16_t t)
 {
 	while(t--);
+}
+void key_scan()
+{
+	if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_3) == GPIO_PIN_RESET)
+	{
+		delay_ms(1000);
+		if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_3) == GPIO_PIN_RESET)    //KEY1_Pin
+		{
+			HAL_GPIO_TogglePin(LED0_GPIO_Port,LED0_Pin);              //PB5 0
+//            Voltage_REF-=0.01;
+			while(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_3) == GPIO_PIN_RESET );
+		}
+	}
+	if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4) == GPIO_PIN_RESET)       //KEY0_Pin
+	{ 
+		delay_ms(1000);
+		if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4) == GPIO_PIN_RESET)
+		{
+			Voltage_REF+=0.001;
+			HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);               //PE5  0
+			while(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4) == GPIO_PIN_RESET );
+		}
+	}
 }
 uint16_t sin1[200] = {3657,3770,3882,3995,4107,4219,4330,4440,4550,4659,4766,4873,4978,5081,5184,5285,5384,
 5481,5576,5670,5762,5851,5938,6023,6105,6185,6263,6337,6410,6479,6545,6609,6670,
@@ -182,6 +206,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    key_scan();
 //	for (uint16_t i = 0; i < FFT_LENGTH; i++)
 //	{
 //     printf("%.3f\n", adc_buff[i]); //打印ADC_Value
