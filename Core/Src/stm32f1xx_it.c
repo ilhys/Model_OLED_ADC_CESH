@@ -235,7 +235,7 @@ void DMA1_Channel1_IRQHandler(void)
   if(ADC_count>1023) 
   {
     ADC_count=0;  
-    /**********************进行傅里叶变�?*******************************/
+    /**********************进行傅里叶变�??*******************************/
     for (int i = 0; i < FFT_LENGTH; i++)
     { 
 	  fft_inputbuf[i * 2] = adc_buff[i];
