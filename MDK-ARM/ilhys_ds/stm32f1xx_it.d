@@ -37,7 +37,7 @@ ilhys_ds\stm32f1xx_it.o: ../Middlewares/ST/ARM/DSP/Inc/arm_math.h
 ilhys_ds\stm32f1xx_it.o: ../Drivers/CMSIS/Include/core_cm3.h
 ilhys_ds\stm32f1xx_it.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h
 ilhys_ds\stm32f1xx_it.o: D:\Keil5\ARM\ARMCC\Bin\..\include\math.h
-ilhys_ds\stm32f1xx_it.o: ../Drivers/CMSIS/DSP/Include/arm_const_structs.h
-ilhys_ds\stm32f1xx_it.o: ../Drivers/CMSIS/DSP/Include/arm_math.h
-ilhys_ds\stm32f1xx_it.o: ../Drivers/CMSIS/DSP/Include/arm_common_tables.h
-ilhys_ds\stm32f1xx_it.o: ../../Model_OLED/./BSP/pidw/pid.h
+ilhys_ds\stm32f1xx_it.o: ..\Drivers\CMSIS\DSP\Include\arm_const_structs.h
+ilhys_ds\stm32f1xx_it.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
+ilhys_ds\stm32f1xx_it.o: ..\Drivers\CMSIS\DSP\Include\arm_common_tables.h
+ilhys_ds\stm32f1xx_it.o: ..\..\Model_OLED_ADC_CESHI\./BSP/pidw/pid.h

@@ -128,9 +128,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
     	
 //		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, sin1[k]); 
-//		TIM1->CCR1=sin1[k]*U_pi.Out;
+		TIM1->CCR1=sin1[k]*U_pi.Out;
 		
-		TIM1->CCR1=sin1[k];
+//		TIM1->CCR1=sin1[k];
 		k++;
 		if(k == size)k = 0;
 	}
@@ -201,7 +201,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim3); //�??启定时器
   ceshi=156.0212;
   CNTL_PI_F_init(&U_pi);//U_pi初始值化
-  U_pi.Kp = 0.1;    U_pi.Ki = 0.002;
+  U_pi.Kp = 0.5;    U_pi.Ki = 0.00000;
   
   /* USER CODE END 2 */
 
