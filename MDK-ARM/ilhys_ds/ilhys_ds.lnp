@@ -9,6 +9,8 @@
 "ilhys_ds\usart.o"
 "ilhys_ds\stm32f1xx_it.o"
 "ilhys_ds\stm32f1xx_hal_msp.o"
+"ilhys_ds\pid.o"
+"ilhys_ds\oled.o"
 "ilhys_ds\stm32f1xx_hal_gpio_ex.o"
 "ilhys_ds\stm32f1xx_hal_adc.o"
 "ilhys_ds\stm32f1xx_hal_adc_ex.o"
@@ -27,11 +29,8 @@
 "ilhys_ds\stm32f1xx_hal_tim_ex.o"
 "ilhys_ds\stm32f1xx_hal_uart.o"
 "ilhys_ds\system_stm32f1xx.o"
-"ilhys_ds\pid.o"
-"ilhys_ds\oled.o"
-"ilhys_ds\cr4_fft_256_stm32.o"
 "../Middlewares/ST/ARM/DSP/Lib/arm_cortexM3l_math.lib"
---library_type=microlib --strict --scatter "ilhys_ds\ilhys_ds.sct"
+--strict --scatter "ilhys_ds\ilhys_ds.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "ilhys_ds.map" -o ilhys_ds\ilhys_ds.axf
