@@ -1,5 +1,6 @@
 #include "pid.h"
 #include "stdio.h"
+#include "math.h"
 
 //*********** Structure Init Function ****//
 void CNTL_PI_F_init(CNTL_PI_F *k){
@@ -25,8 +26,10 @@ void CNTL_PI_F_FUNC(CNTL_PI_F *v){
 
 	/* integral term */
 	v->ui = (v->Out == v->v1)?((v->Ki* v->up)+ v->i1) : v->i1;
+//	if(fabsf(v->Ref - v->Fbk)<=0.001) v->ui=1;
 	v->i1 = v->ui;
-
+    
+	
 	/* control output */
 	v->v1 = (v->up + v->ui);
 	v->Out = (v->v1 > v->Umax)?(v->Umax) : v->v1;
