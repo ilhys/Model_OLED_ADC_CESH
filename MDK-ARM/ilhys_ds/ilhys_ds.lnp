@@ -29,6 +29,7 @@
 "ilhys_ds\system_stm32f1xx.o"
 "ilhys_ds\pid.o"
 "ilhys_ds\oled.o"
+"ilhys_ds\lvbo.o"
 "ilhys_ds\cr4_fft_256_stm32.o"
 "../Middlewares/ST/ARM/DSP/Lib/arm_cortexM3l_math.lib"
 --library_type=microlib --strict --scatter "ilhys_ds\ilhys_ds.sct"

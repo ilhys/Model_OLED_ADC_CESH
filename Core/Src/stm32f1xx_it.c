@@ -26,6 +26,7 @@
 #include "arm_math.h"
 #include "arm_const_structs.h"
 #include "./BSP/pidw/pid.h"
+#include "./BSP/lvbo/lvbo.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,9 +55,9 @@ extern float effect[FFT_LENGTH];
 extern float UI[FFT_LENGTH];
 
 extern float Voltage_REF;
-extern uint32_t ADC_count;
+extern uint32_t ADC_count,eff_measure;
 extern double effective_value;
-extern double his_value;
+extern double effective_value_all;
 extern CNTL_PI_F U_pi;  
 
 /* USER CODE END PV */
@@ -229,43 +230,53 @@ void DMA1_Channel1_IRQHandler(void)
   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
   if(cnt%2==1)
   {
-	adc_buff[ADC_count]=ADC_Value[0]*3.3/4096+0.00;
+//  adc_buff[ADC_count]=(ADC_Value[0]*3.3/4096+0.00-1.5)*20;
+	adc_buff[ADC_count]=MovingAverageFilter((ADC_Value[0]*3.3/4096+0.00-1.5));
 	ADC_count++;
 	cnt=1;
   }
   cnt++;
   if(ADC_count>1023) 
   {
-    ADC_count=0;  
-    /**********************进行傅里叶变�??*******************************/
-    for (int i = 0; i < FFT_LENGTH; i++)
-    { 
-	  fft_inputbuf[i * 2] = adc_buff[i];
-	  fft_inputbuf[i * 2 + 1] = 0;
-//	  effective_value+=(adc_buff[i]*adc_buff[i]);
-    }
-    arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
-    arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
-//    /**********************等待转化完毕*******************************/
-    fft_outputbuf[0] /= 1024;
-      for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅�??
-    {
-       fft_outputbuf[i] /= 512;
-	}
+    ADC_count=0;
+//    /**********************进行傅里叶变�??*******************************/
+//    for (int i = 0; i < FFT_LENGTH; i++)
+//    { 
+//	  fft_inputbuf[i * 2] = adc_buff[i];
+//	  fft_inputbuf[i * 2 + 1] = 0;
+////	  effective_value+=(adc_buff[i]*adc_buff[i]);
+//    }
+//    arm_cfft_f32(&arm_cfft_sR_f32_len1024, fft_inputbuf, 0, 1);
+//    arm_cmplx_mag_f32(fft_inputbuf, fft_outputbuf, FFT_LENGTH);
+////    /**********************等待转化完毕*******************************/
+//    fft_outputbuf[0] /= 1024;
+//      for (int i = 1; i < FFT_LENGTH; i++)//输出各次谐波幅�??
+//    {
+//       fft_outputbuf[i] /= 512;
+//	}
 	  for (int i = 0; i < FFT_LENGTH; i++)
-    {
+    { 
+//	  printf("%.3f\n",adc_buff[i]);
 	  effective_value+=(adc_buff[i])*((adc_buff[i]));
     }
 	effective_value=effective_value/FFT_LENGTH;
 	effective_value=sqrt(effective_value);
+	if(effective_value<=100) 
+	{
+		effective_value_all+=effective_value;
+		eff_measure++;
+	}
   }
-  if(effective_value>=10)   	 effective_value=his_value;
-  his_value=effective_value;
-  U_pi.Ref = (Voltage_REF);  
-  U_pi.Fbk = (effective_value);     
-  CNTL_PI_F_FUNC(&U_pi);
-
-	
+	if(eff_measure>4)
+	{
+	effective_value=effective_value_all/5;
+	U_pi.Ref = (Voltage_REF);  
+	U_pi.Fbk = (effective_value);     		
+	CNTL_PI_F_FUNC(&U_pi);
+//	printf("%.3f\n",effective_value);
+    eff_measure=0;
+	effective_value_all=0;
+	}
   /* USER CODE END DMA1_Channel1_IRQn 1 */
 }
 

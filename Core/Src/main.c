@@ -59,7 +59,7 @@ float va,vb,va1;
 uint32_t ad1,ad2,i;
 int count=0;
 __IO uint8_t AdcConvEnd = 0;
-uint32_t ADC_count=0;
+uint32_t ADC_count=0,eff_measure=0;
 uint32_t ADC_Value[ADC_SIZE];
 
 float adc_buff[FFT_LENGTH];
@@ -68,9 +68,10 @@ float fft_outputbuf[FFT_LENGTH];
 float effect[FFT_LENGTH];
 float UI[FFT_LENGTH];
 
-float Voltage_REF=1.654;
+float Voltage_REF=0.514;
 double effective_value;
-double his_value,uk=0.7;
+double effective_value_all;
+double uk=0.7;
 CNTL_PI_F U_pi;              //U_pi
 
 /* USER CODE END PV */
@@ -105,7 +106,7 @@ void key_scan()
 		if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4) == GPIO_PIN_RESET)
 		{
 			Voltage_REF+=0.001;
-			uk+=0.005;
+			uk+=0.003;
 			HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);               //PE5  0
 			while(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4) == GPIO_PIN_RESET );
 		}
@@ -131,9 +132,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 //    	if(U_pi.Out>0&&U_pi.Out<1)
 //		{
-//			TIM1->CCR1=3600+(sin1[k]-3600)*U_pi.Out*0.95;
+			TIM1->CCR1=3600+(sin1[k]-3600)*U_pi.Out*0.98;
 //		}
-		TIM1->CCR1=3600+(sin1[k]-3600)*uk*0.95;
+//		TIM1->CCR1=3600+(sin1[k]-3600)*uk*0.98;
 //		TIM1->CCR1=sin1[k];
 		k++;
 		if(k == size)k = 0;
@@ -205,7 +206,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim3); //�??启定时器
   ceshi=156.0212;
   CNTL_PI_F_init(&U_pi);//U_pi初始值化
-  U_pi.Kp = 0.5;    U_pi.Ki = 0.0005;
+  U_pi.Kp = 1;    U_pi.Ki = 0.5;
   
   /* USER CODE END 2 */
 
